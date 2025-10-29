@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 /* import all the icons in Free Solid, Free Regular, and Brands styles */
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { far } from "@fortawesome/free-regular-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-import { Link } from "react-router-dom";
+import { far } from "@fortawesome/free-regular-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { Navigate, useNavigate } from "react-router-dom";
 
 library.add(fas, far, fab);
 const NavBar = () => {
@@ -20,11 +20,15 @@ const NavBar = () => {
     "Sale",
     "지속가능성",
   ];
+  const navigate = useNavigate();
+  const gotoLogin = () => {
+    navigate("/login");
+  };
   return (
     <div>
-      <div className="login-link">
+      <div className="login-button" onClick={gotoLogin}>
         <FontAwesomeIcon icon="fa-regular fa-user" />
-        <Link to="/login">로그인</Link>
+        <div>로그인</div>
       </div>
       <div className="logo">
         <img
