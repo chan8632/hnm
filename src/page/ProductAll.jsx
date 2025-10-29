@@ -3,6 +3,7 @@ import ProductCard from "../components/ProductCard";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useNavigate } from "react-router-dom";
 const ProductAll = () => {
   const [productList, setProductList] = useState([]);
   const getProduct = async () => {
@@ -15,11 +16,12 @@ const ProductAll = () => {
   useEffect(() => {
     getProduct();
   }, []);
+  const navigate = useNavigate();
   return (
     <Container>
       <Row>
         {productList?.map((item, idx) => (
-          <Col lg={3} key={idx}>
+          <Col lg={3} key={idx} onClick={() => navigate(`product/${item?.id}`)}>
             <ProductCard item={item} />
           </Col>
         ))}

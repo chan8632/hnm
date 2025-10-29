@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import LoginPage from "./page/LoginPage";
 import ProductDetail from "./page/ProductDetail";
@@ -21,7 +21,10 @@ function App() {
           path="/login"
           element={<LoginPage setAuthenticate={setAuthenticate} />}
         />
-        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route
+          path="/product/:id"
+          element={authenticate ? <ProductDetail /> : <Navigate to="/login" />}
+        />
       </Routes>
     </div>
   );
