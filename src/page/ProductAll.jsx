@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import ProductCard from "../components/ProductCard";
+import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { useNavigate } from "react-router-dom";
+import ProductCard from "../components/ProductCard";
 const ProductAll = () => {
   const [productList, setProductList] = useState([]);
   const getProduct = async () => {
@@ -16,12 +15,12 @@ const ProductAll = () => {
   useEffect(() => {
     getProduct();
   }, []);
-  const navigate = useNavigate();
+
   return (
     <Container>
       <Row>
         {productList?.map((item, idx) => (
-          <Col lg={3} key={idx} onClick={() => navigate(`product/${item?.id}`)}>
+          <Col lg={3} key={idx}>
             <ProductCard item={item} />
           </Col>
         ))}

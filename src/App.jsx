@@ -6,6 +6,7 @@ import ProductAll from "./page/ProductAll";
 import Navbar from "./components/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
+import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
   const [authenticate, setAuthenticate] = useState(false); //true면 로그인 됨. false면 로그인 안됨
@@ -23,7 +24,7 @@ function App() {
         />
         <Route
           path="/product/:id"
-          element={authenticate ? <ProductDetail /> : <Navigate to="/login" />}
+          element={<PrivateRoute authenticate={authenticate} />}
         />
       </Routes>
     </div>

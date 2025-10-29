@@ -1,19 +1,18 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Container } from "react-bootstrap";
 
 const LoginPage = ({ setAuthenticate }) => {
-  const [loginId, setLoginId] = useState(null);
-  const [loginPassword, setLoginPassword] = useState(null);
+  // const [loginId, setLoginId] = useState(null);
+  // const [loginPassword, setLoginPassword] = useState(null);
   const navigate = useNavigate();
-  const onChangeId = (event) => {
-    setLoginId(event.target.value);
-  };
-  const onChangePassword = (event) => {
-    setLoginPassword(event.target.value);
-  };
+  // const onChangeId = (event) => {
+  //   setLoginId(event.target.value);
+  // };
+  // const onChangePassword = (event) => {
+  //   setLoginPassword(event.target.value);
+  // };
   const loginUser = (event) => {
     event.preventDefault();
     setAuthenticate(true);
