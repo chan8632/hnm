@@ -4,8 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Container } from "react-bootstrap";
 
-const LoginPage = () => {
-  const [authenticate, setAuthenticate] = useState(false); //true면 로그인 됨. false면 로그인 안됨.
+const LoginPage = ({ setAuthenticate }) => {
   const [loginId, setLoginId] = useState(null);
   const [loginPassword, setLoginPassword] = useState(null);
   const navigate = useNavigate();
@@ -17,7 +16,8 @@ const LoginPage = () => {
   };
   const loginUser = (event) => {
     event.preventDefault();
-    console.log("login");
+    setAuthenticate(true);
+    navigate("/");
     // if (loginId.match(/@/g) && loginPassword.length > 0) {
     //   navigate("/");
     // }
