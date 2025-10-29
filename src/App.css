@@ -1,4 +1,4 @@
-.login-button {
+.login-link {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -33,4 +33,26 @@
 }
 .search-bar input:focus {
   outline: none;
+}
+.product-card: {
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.login-page {
+  display: flex;
+  justify-content: center;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  gap:10px;
+}
+.login-button{
+  width: 60px;
+  text-align:center;
 }

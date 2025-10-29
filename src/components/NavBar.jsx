@@ -6,6 +6,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 library.add(fas, far, fab);
 const NavBar = () => {
@@ -21,9 +22,9 @@ const NavBar = () => {
   ];
   return (
     <div>
-      <div className="login-button">
+      <div className="login-link">
         <FontAwesomeIcon icon="fa-regular fa-user" />
-        <div>로그인</div>
+        <Link to="/login">로그인</Link>
       </div>
       <div className="logo">
         <img
@@ -33,7 +34,7 @@ const NavBar = () => {
       </div>
       <div className="menu-area">
         <ul className="menu-list">
-          {menuList.map((menu,idx) => (
+          {menuList.map((menu, idx) => (
             <li key={idx}>{menu}</li>
           ))}
           <div className="search-bar">

@@ -1,6 +1,6 @@
 const ProductCard = ({ item }) => {
   return (
-    <div>
+    <div className="product-card">
       <img width={200} src={`${item?.img}`} />
       <div>{item?.choice === true ? "Conscious choice" : ""}</div>
       <div>{item?.title}</div>
