@@ -6,7 +6,8 @@ import ProductCard from "../components/ProductCard";
 const ProductAll = () => {
   const [productList, setProductList] = useState([]);
   const getProduct = async () => {
-    const url = "http://localhost:5000/products";
+    const url =
+      "https://my-json-server.typicode.com/chan8632/hnmserver/products";
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
