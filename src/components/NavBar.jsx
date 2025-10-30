@@ -7,6 +7,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 library.add(fas, far, fab);
 const NavBar = () => {
@@ -20,9 +21,16 @@ const NavBar = () => {
     "Sale",
     "지속가능성",
   ];
+  const [searchData, setSearchData] = useState(null);
   const navigate = useNavigate();
   const gotoLogin = () => {
     navigate("/login");
+  };
+  const onChangeSearch = (event) => {
+    const curSearchData = event.target.value;
+  };
+  const dataMatching = (listData, searchData) => {
+    // 여기서 매칭한 다음, 자료 비교
   };
   return (
     <div>
@@ -43,7 +51,7 @@ const NavBar = () => {
           ))}
           <div className="search-bar">
             <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
-            <input type="text" />
+            <input type="text" value={searchData} onChange={onChangeSearch} />
           </div>
         </ul>
       </div>

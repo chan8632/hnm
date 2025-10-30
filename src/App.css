@@ -43,12 +43,13 @@
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.itemInfo{
-  display:flex;
+.itemInfo {
+  display: flex;
   flex-direction: column;
   gap: 15px;
 }
-.detail-select{
+.detail-select {
   width: 50px;
-  text-align:center;
+  text-align: center;
+  padding-bottom: 5px;
 }
