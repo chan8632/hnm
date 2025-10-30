@@ -6,11 +6,10 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 library.add(fas, far, fab);
-const NavBar = ({ searchData, setSearchData }) => {
+const NavBar = () => {
   const menuList = [
     "여성",
     "Divided",
@@ -25,14 +24,12 @@ const NavBar = ({ searchData, setSearchData }) => {
   const gotoLogin = () => {
     navigate("/login");
   };
-  const [inputData, setInputData] = useState("");
-  const onChangeSearch = (event) => {
-    const curSearchData = event.target.value;
-    setInputData(curSearchData);
-  };
-  const onSubmitSerach = (event) => {
-    event.preventDefault();
-    setSearchData(inputData);
+  const search = (event) => {
+    if (event.keyCode == 13) {
+      const keyword = event.target.value;
+      navigate(`/?q=${keyword}`);
+      return;
+    }
   };
 
   return (
@@ -53,10 +50,8 @@ const NavBar = ({ searchData, setSearchData }) => {
             <li key={idx}>{menu}</li>
           ))}
           <div className="search-bar">
-            <form onSubmit={onSubmitSerach}>
-              <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
-              <input type="text" value={inputData} onChange={onChangeSearch} />
-            </form>
+            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
+            <input type="text" onKeyDown={search} />
           </div>
         </ul>
       </div>
