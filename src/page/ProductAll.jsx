@@ -1,21 +1,9 @@
-import { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import ProductCard from "../components/ProductCard";
-const ProductAll = () => {
-  const [productList, setProductList] = useState([]);
-  const getProduct = async () => {
-    const url =
-      "https://my-json-server.typicode.com/chan8632/hnmserver/products";
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-    setProductList(data);
-  };
-  useEffect(() => {
-    getProduct();
-  }, []);
+const ProductAll = ({productList}) => {
+  
 
   return (
     <Container>

@@ -10,7 +10,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 library.add(fas, far, fab);
-const NavBar = () => {
+const NavBar = ({ searchData, setSearchData }) => {
   const menuList = [
     "여성",
     "Divided",
@@ -21,17 +21,20 @@ const NavBar = () => {
     "Sale",
     "지속가능성",
   ];
-  const [searchData, setSearchData] = useState(null);
   const navigate = useNavigate();
   const gotoLogin = () => {
     navigate("/login");
   };
+  const [inputData, setInputData] = useState("");
   const onChangeSearch = (event) => {
     const curSearchData = event.target.value;
+    setInputData(curSearchData);
   };
-  const dataMatching = (listData, searchData) => {
-    // 여기서 매칭한 다음, 자료 비교
+  const onSubmitSerach = (event) => {
+    event.preventDefault();
+    setSearchData(inputData);
   };
+
   return (
     <div>
       <div className="login-button" onClick={gotoLogin}>
@@ -50,8 +53,10 @@ const NavBar = () => {
             <li key={idx}>{menu}</li>
           ))}
           <div className="search-bar">
-            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
-            <input type="text" value={searchData} onChange={onChangeSearch} />
+            <form onSubmit={onSubmitSerach}>
+              <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
+              <input type="text" value={inputData} onChange={onChangeSearch} />
+            </form>
           </div>
         </ul>
       </div>
