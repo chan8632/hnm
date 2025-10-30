@@ -9,13 +9,11 @@ import { useEffect, useState } from "react";
 import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
-  const [authenticate, setAuthenticate] = useState(true); //true면 로그인 됨. false면 로그인 안됨
-  useEffect(() => {
-    console.log("aa", authenticate);
-  }, [authenticate]);
+  const [authenticate, setAuthenticate] = useState(false); //true면 로그인 됨. false면 로그인 안됨
+ 
   return (
     <div>
-      <Navbar />
+      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
       <Routes>
         <Route path="/" element={<ProductAll />} />
         <Route

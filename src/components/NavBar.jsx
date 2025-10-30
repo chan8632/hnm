@@ -9,7 +9,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 library.add(fas, far, fab);
-const NavBar = () => {
+const NavBar = ({ authenticate, setAuthenticate }) => {
   const menuList = [
     "여성",
     "Divided",
@@ -22,7 +22,11 @@ const NavBar = () => {
   ];
   const navigate = useNavigate();
   const gotoLogin = () => {
-    navigate("/login");
+    if (authenticate === false) {
+      navigate("/login");
+    } else {
+      setAuthenticate(false);
+    }
   };
   const search = (event) => {
     if (event.keyCode == 13) {
@@ -36,7 +40,7 @@ const NavBar = () => {
     <div>
       <div className="login-button" onClick={gotoLogin}>
         <FontAwesomeIcon icon="fa-regular fa-user" />
-        <div>로그인</div>
+        <div>{authenticate ? "로그아웃" : "로그인"}</div>
       </div>
       <div className="logo">
         <img
