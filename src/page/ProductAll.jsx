@@ -3,19 +3,21 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import ProductCard from "../components/ProductCard";
+import { useSearchParams } from "react-router-dom";
 const ProductAll = () => {
   const [productList, setProductList] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
   const getProduct = async () => {
-    const url =
-      "https://my-json-server.typicode.com/chan8632/hnmserver/products";
+    const url = `https://my-json-server.typicode.com/chan8632/hnmserver/products/?q=${searchParams.get(
+      "q"
+    )}`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     setProductList(data);
   };
   useEffect(() => {
     getProduct();
-  }, []);
+  }, [searchParams]);
 
   return (
     <Container>
