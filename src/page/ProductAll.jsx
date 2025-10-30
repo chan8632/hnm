@@ -6,18 +6,17 @@ import ProductCard from "../components/ProductCard";
 import { useSearchParams } from "react-router-dom";
 const ProductAll = () => {
   const [productList, setProductList] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setquery] = useSearchParams();
+  const searchQuery = query.get("q") || "";
   const getProduct = async () => {
-    const url = `https://my-json-server.typicode.com/chan8632/hnmserver/products/?q=${searchParams.get(
-      "q"
-    )}`;
+    const url = `https://my-json-server.typicode.com/chan8632/hnmserver/products/?q=${searchQuery}`;
     const response = await fetch(url);
     const data = await response.json();
     setProductList(data);
   };
   useEffect(() => {
     getProduct();
-  }, [searchParams]);
+  }, [query]);
 
   return (
     <Container>
