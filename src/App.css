@@ -132,7 +132,9 @@ body {
 .bookmark {
   cursor: pointer;
 }
-
+.detailImg{
+  width:100%
+}
 .itemInfo {
   display: flex;
   flex-direction: column;

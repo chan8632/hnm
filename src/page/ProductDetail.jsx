@@ -20,7 +20,7 @@ const ProductDetail = () => {
       {/* 사진 */}
       <Row>
         <Col md={6} sm={12}>
-          <img src={item?.img} />
+          <img className='detailImg' src={item?.img} />
         </Col>
         <Col md={6} sm={12} className="itemInfo">
           {/* 정보글 및 추가 버튼 */}
