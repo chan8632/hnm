@@ -132,8 +132,8 @@ body {
 .bookmark {
   cursor: pointer;
 }
-.detailImg{
-  width:100%
+.detailImg {
+  width: 100%;
 }
 .itemInfo {
   display: flex;
@@ -167,8 +167,8 @@ body {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: burlywood;
   overflow-x: hidden;
+  background: white;
   transition: 0.5s;
   padding-top: 60px;
   z-index: 2;
