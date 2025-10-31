@@ -8,8 +8,6 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Offcanvas from "react-bootstrap/Offcanvas";
 
 library.add(fas, far, fab);
 const NavBar = ({ authenticate, setAuthenticate }) => {
@@ -23,17 +21,9 @@ const NavBar = ({ authenticate, setAuthenticate }) => {
     "Sale",
     "지속가능성",
   ];
+  const [width, setWidth] = useState(0);
   const navigate = useNavigate();
-  const gotoMain = () => {
-    navigate("/");
-  };
-  const gotoLogin = () => {
-    if (authenticate === false) {
-      navigate("/login");
-    } else {
-      setAuthenticate(false);
-    }
-  };
+
   const search = (event) => {
     if (event.keyCode == 13) {
       const keyword = event.target.value;
@@ -42,42 +32,54 @@ const NavBar = ({ authenticate, setAuthenticate }) => {
     }
   };
 
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   return (
     <div>
-      <div className="login-button" onClick={gotoLogin}>
-        <FontAwesomeIcon icon="fa-regular fa-user" />
-        <div>{authenticate ? "로그아웃" : "로그인"}</div>
+      <div className="side-menu" style={{ width: width }}>
+        <button className="closebtn" onClick={() => setWidth(0)}>
+          &times;
+        </button>
+        <ul className="side-menu-list" id="menu-list">
+          {menuList.map((menu, idx) => (
+            <li key={idx}>{menu}</li>
+          ))}
+        </ul>
       </div>
-      <div className="logo" onClick={gotoMain}>
+      <div className="nav-header">
+        <div className="burger-menu hide">
+          <FontAwesomeIcon
+            icon="fa-solid fa-bars"
+            onClick={() => setWidth(250)}
+          />
+        </div>
+        {authenticate ? (
+          <div onClick={() => setAuthenticate(false)}>
+            <FontAwesomeIcon icon="fa-regular fa-user" />
+            <span style={{ cursor: "pointer" }}>로그아웃</span>
+          </div>
+        ) : (
+          <div onClick={() => navigate("/login")}>
+            <FontAwesomeIcon icon="fa-regular fa-user" />
+            <span style={{ cursor: "pointer" }}>로그인</span>
+          </div>
+        )}
+      </div>
+
+      <div className="nav-logo">
         <img
           width="100px"
           src="data:image/png;base64,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"
         />
       </div>
-      <div className="menu-area">
-        <div className="menu-toggle" onClick={handleShow}>
-          <FontAwesomeIcon icon="fa-solid fa-bars" />
+      <div className="nav-menu-area">
+        <ul className="menu">
+          {menuList.map((menu, idx) => (
+            <li key={idx}>{menu}</li>
+          ))}
+        </ul>
+        <div className="search-box">
+          <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
+          <input type="text" onKeyDown={search} />
         </div>
-
-        <Offcanvas show={show} onHide={handleClose} backdrop={false}>
-          <Offcanvas.Header closeButton></Offcanvas.Header>
-          <Offcanvas.Body>
-            <ul className="menu-list">
-              {menuList.map((menu, idx) => (
-                <li key={idx}>{menu}</li>
-              ))}
-              <div className="search-bar">
-                <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
-                <input type="text" onKeyDown={search} />
-              </div>
-            </ul>
-          </Offcanvas.Body>
-        </Offcanvas>
       </div>
     </div>
   );

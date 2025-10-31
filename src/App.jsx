@@ -1,11 +1,10 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import "./App.css";
-import LoginPage from "./page/LoginPage";
-import ProductDetail from "./page/ProductDetail";
-import ProductAll from "./page/ProductAll";
-import Navbar from "./components/NavBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/NavBar";
+import LoginPage from "./page/LoginPage";
+import ProductAll from "./page/ProductAll";
 import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
