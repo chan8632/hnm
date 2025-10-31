@@ -10,7 +10,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 library.add(fas, far, fab);
 
-const ProductCard = ({ item,  }) => {
+const ProductCard = ({ item, authenticate }) => {
   const [isMark, setIsMark] = useState(false);
   const navigate = useNavigate();
   const showDetail = () => {
@@ -20,7 +20,11 @@ const ProductCard = ({ item,  }) => {
     event.stopPropagation();
   };
   const changeIcon = () => {
-    setIsMark((prev) => !prev);
+    if (authenticate === true) {
+      setIsMark((prev) => !prev);
+    } else if (authenticate === false) {
+      navigate("login");
+    }
   };
   return (
     <div className="product-card">
