@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const ProductDetail = () => {
@@ -32,7 +32,7 @@ const ProductDetail = () => {
             <option>m</option>
             <option>l</option>
           </select>
-          <button>추가</button>
+          <Button variant="dark">추가</Button >
         </Col>
       </Row>
     </Container>

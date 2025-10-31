@@ -36,7 +36,7 @@ const LoginPage = ({ setAuthenticate }) => {
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
 
-        <Button variant="danger" type="submit">
+        <Button variant="dark" type="submit">
           로그인
         </Button>
       </Form>

@@ -31,7 +31,7 @@ const ProductCard = ({ item }) => {
       </div>
       <div></div>
       <div>{item?.title}</div>
-      <div>{item?.price}</div>
+      <div>{`₩ ${item?.price}`}</div>
       <div></div>
     </div>
   );
