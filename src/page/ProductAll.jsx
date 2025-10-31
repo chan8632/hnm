@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import ProductCard from "../components/ProductCard";
 import { useSearchParams } from "react-router-dom";
-const ProductAll = () => {
+const ProductAll = ({ authenticate }) => {
   const [productList, setProductList] = useState([]);
   const [query, setquery] = useSearchParams();
   const searchQuery = query.get("q") || "";
@@ -23,7 +23,7 @@ const ProductAll = () => {
       <Row>
         {productList?.map((item, idx) => (
           <Col md={3} sm={12} key={idx}>
-            <ProductCard item={item} />
+            <ProductCard item={item} authenticate={authenticate} />
           </Col>
         ))}
       </Row>

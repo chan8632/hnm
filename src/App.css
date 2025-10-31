@@ -84,12 +84,9 @@ body {
 .product-card {
   transition: transform 0.3s ease-in-out;
   margin-bottom: 20px;
+  user-select: none;
 }
 
-.product-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
 .image-container {
   position: relative;
   display: inline-block;
@@ -98,6 +95,10 @@ body {
   display: block;
   width: 100%;
   height: auto;
+}
+.product-card img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .button-image {
   position: absolute;
@@ -126,6 +127,9 @@ body {
   border: none !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   color: #555 !important; /* 호버 시 아이콘 색상 변경 (선택) */
+}
+.bookmark {
+  cursor: pointer;
 }
 
 .itemInfo {
