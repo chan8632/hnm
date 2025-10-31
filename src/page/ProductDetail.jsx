@@ -19,10 +19,10 @@ const ProductDetail = () => {
     <Container style={{ marginTop: "50px" }}>
       {/* 사진 */}
       <Row>
-        <Col>
+        <Col md={6} sm={12}>
           <img src={item?.img} />
         </Col>
-        <Col className="itemInfo">
+        <Col md={6} sm={12} className="itemInfo">
           {/* 정보글 및 추가 버튼 */}
           <div>{item?.title}</div>
           <div>₩ 99900</div>
@@ -32,7 +32,7 @@ const ProductDetail = () => {
             <option>m</option>
             <option>l</option>
           </select>
-          <Button variant="dark">추가</Button >
+          <Button variant="dark">추가</Button>
         </Col>
       </Row>
     </Container>
